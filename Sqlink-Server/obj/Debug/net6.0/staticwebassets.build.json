@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "F2URqtbU8LVtpcto01sqvavHo80kVkQMUFJxtOwp7VI=",
+  "Source": "Sqlink-Server",
+  "BasePath": "_content/Sqlink-Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
