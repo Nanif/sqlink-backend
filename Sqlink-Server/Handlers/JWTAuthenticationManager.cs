@@ -9,11 +9,12 @@ namespace Sqlink_Server.Handlers
 {
     public interface IJWTAuthenticationManager
     {
-        LoginResponseModel? Authenticate(string? email, string? password);
+        LoginResponseModel? Authenticate(User user);
     }
 
     public class JWTAuthenticationManager : IJWTAuthenticationManager
     {
+
         private readonly string tokenKey;
 
         public JWTAuthenticationManager(string tokenKey)
@@ -21,23 +22,15 @@ namespace Sqlink_Server.Handlers
             this.tokenKey = tokenKey;
         }
 
-        public LoginResponseModel? Authenticate(string? email, string? password)
+        public LoginResponseModel? Authenticate(User user)
         {
-            var user = new User() { Name = "naomi" };//TODO get the user by email & password
-            if (user == null)
-            {
-                return null;
-            }
-
+          // var user = new User() { Name = "naomi" }; //TODO get the user by email & password
             var tokenHandler = new JwtSecurityTokenHandler();
-            Console.WriteLine("token key 1: " + tokenKey);
-            var key = Encoding.ASCII.GetBytes(tokenKey);
-            Console.WriteLine("token key 2: " + tokenKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Email, email ?? "")
+                    new Claim(ClaimTypes.Email, user.Email ?? "")
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),
             };
