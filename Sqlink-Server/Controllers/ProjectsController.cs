@@ -22,6 +22,7 @@ namespace Sqlink_Server.Controllers
             _context = context;
         }
 
+
         // GET: api/Projects
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
